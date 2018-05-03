@@ -6,3 +6,4 @@
 4. Remove node from head
 5. Remove node from tail
 6. Traverse the entire linked list. 
+7. Add node to Nth position

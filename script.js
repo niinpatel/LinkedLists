@@ -105,6 +105,31 @@ LinkedList.prototype.traverse = function(){
 };
 
 
+// Add node to nth position
+LinkedList.prototype.addToN = function(value, n){
+
+    //find n - 1th node
+    let prevOFN = this.head;
+    for(let i = 0; i < n - 2; i++){
+        prevOFN = prevOFN.next;
+    }
+
+    if(!prevOFN){
+        throw 'nth node not found'
+    }
+
+    // set new node
+    newNode = new Node(prevOFN, value, prevOFN.next);
+
+    // set new node as next and previous of its previous and next node respectively.
+    prevOFN.next.prev = newNode;
+    prevOFN.next = newNode;
+
+};
+
+
+
+
 ll = new LinkedList();
 
 ll.addToHead(300);
