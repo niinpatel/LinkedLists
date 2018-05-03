@@ -108,21 +108,33 @@ LinkedList.prototype.traverse = function(){
 // Add node to nth position
 LinkedList.prototype.addToN = function(value, n){
 
+    if(n === 0){
+        this.addToHead(value);
+        return;
+    }
+
     //find n - 1th node
     let prevOFN = this.head;
-    for(let i = 0; i < n - 2; i++){
-        prevOFN = prevOFN.next;
+
+    for(let i = 0; i < n - 1; i++){
+        prevOFN =(prevOFN)? prevOFN.next : null;
     }
 
     if(!prevOFN){
         throw 'nth node not found'
     }
 
-    // set new node
     let newNode = new Node(prevOFN, value, prevOFN.next);
 
-    // set new node as next and previous of its previous and next node respectively.
-    prevOFN.next.prev = newNode;
+    if(prevOFN.next){
+        prevOFN.next.prev = newNode;
+    }
+    else {
+        this.addToTail(value);
+        return;
+    }
+
+    // set new node
     prevOFN.next = newNode;
 
 };
@@ -132,16 +144,16 @@ LinkedList.prototype.addToN = function(value, n){
 
 ll = new LinkedList();
 
-ll.addToHead(300);
-
-ll.addToHead(400);
-
-ll.addToTail(200);
-
-ll.addToTail(100);
-
-ll.removeHead();
-
-ll.removeTail();
+// ll.addToHead(300);
+//
+// ll.addToHead(400);
+//
+// ll.addToTail(200);
+//
+// ll.addToTail(100);
+//
+// ll.removeHead();
+//
+// ll.removeTail();
 
 console.log(ll);
