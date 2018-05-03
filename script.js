@@ -119,7 +119,7 @@ LinkedList.prototype.addToN = function(value, n){
     }
 
     // set new node
-    newNode = new Node(prevOFN, value, prevOFN.next);
+    let newNode = new Node(prevOFN, value, prevOFN.next);
 
     // set new node as next and previous of its previous and next node respectively.
     prevOFN.next.prev = newNode;
