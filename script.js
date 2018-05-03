@@ -109,33 +109,33 @@ LinkedList.prototype.traverse = function(){
 LinkedList.prototype.addToN = function(value, n){
 
     if(n === 0){
-        this.addToHead(value);
+        this.addToHead(value); // if n is zero, we just add the node to head
         return;
     }
 
-    //find n - 1th node
-    let prevOFN = this.head;
-
+    // else find n - 1th node
+    let prevOfN = this.head;
     for(let i = 0; i < n - 1; i++){
-        prevOFN =(prevOFN)? prevOFN.next : null;
+        prevOfN =(prevOfN)? prevOfN.next : null;
     }
 
-    if(!prevOFN){
+    // throw error if nth node doesn't exist.
+    if(!prevOfN){
         throw 'nth node not found'
     }
 
-    let newNode = new Node(prevOFN, value, prevOFN.next);
+    // create a new node and append it into the linked list.
+    let newNode = new Node(prevOfN, value, prevOfN.next);
 
-    if(prevOFN.next){
-        prevOFN.next.prev = newNode;
+    // if n-1th node is the last one, we add the node to tail of linked list, else, we set previous and next the nodes before and after the new node.
+    if(prevOfN.next){
+        prevOfN.next.prev = newNode;
     }
     else {
         this.addToTail(value);
         return;
     }
-
-    // set new node
-    prevOFN.next = newNode;
+    prevOfN.next = newNode;
 
 };
 
