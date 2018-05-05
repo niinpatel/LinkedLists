@@ -92,6 +92,10 @@ LinkedList.prototype.removeTail = function(){
 LinkedList.prototype.traverse = function(){
 
     let currentNode = this.head;
+    if(currentNode === null){
+        console.log('this is an empty linked list');
+        return;
+    }
     console.log('head node value is ' + currentNode.value);
 
     while(currentNode.next){
@@ -103,6 +107,31 @@ LinkedList.prototype.traverse = function(){
     }
 
 };
+
+
+// Searching from a linked list
+
+LinkedList.prototype.search = function(value){
+
+    let currentNode = this.head;
+    if(currentNode === null){
+        return false; // if head node is null, linked list is empty, return false.
+    }
+    else if(currentNode.value === value){
+        return true;  // if value exist in head node, return true.
+    }
+
+    // iterate through remaining nodes and return true if n is there in any of the nodes.
+    while(currentNode.next){
+        currentNode = currentNode.next;
+        if(currentNode.value === value){
+            return true;
+        }
+    }
+
+    return false;  // return false if n is not found anywhere. 
+};
+
 
 
 // Add node to nth position
